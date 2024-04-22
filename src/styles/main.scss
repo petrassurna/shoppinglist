@@ -1,0 +1,36 @@
+@import 'fonts.scss';
+@import "dimensions.scss";
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color: rgb(0, 120, 212);
+  width: $site-width;
+  margin: 0 auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+
+  a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    padding-right:30px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+body {
+  p {
+    color: red;
+    font-size: 16px;
+  }
+}
