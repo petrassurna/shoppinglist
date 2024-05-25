@@ -1,23 +1,26 @@
-<script lang="ts">
+<script>
 
-  import { onMount } from 'svelte';
-
-  onMount(() => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/src/css/main.min.css';
-    document.head.appendChild(link);
-  });
-
+import {signIn, signOut} from "@auth/sveltekit/client"
+import {page} from "$app/stores";
 
 </script>
 
-<nav>
-  <a href="/">Ingredients</a>
-  <a href="/recipes">Recipes</a>
-</nav>
 
-<h1>Home</h1>
-<p>This is the home page1.</p>
+<h1>Welcome to SvelteKit</h1>
+<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<p>
+    {#if $page.data.session}
+        <span>
+            <small>Signed in as</small><br/>
+            <strong>{$page.data.session.user?.name ?? "User"}</strong>
+        </span>
+        <button on:click={() => signOut()} class="button">Sign out</button>
+    {:else}
+        <span>You are not signed in</span>
+        <button on:click={() => signIn("google")}>
+            Sign In with Google
+        </button>
+    {/if}
+</p>
 
 
